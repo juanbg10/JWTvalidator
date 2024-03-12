@@ -3,8 +3,10 @@
 
 ### DotnetCore ###
 # .NET Core build folders
-bin/
+validacaoJWT/bin/
+validacaoJWT/obj/
 obj/
+bin/
 
 # Common node modules locations
 /node_modules
