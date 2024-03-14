@@ -3,7 +3,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Raven.Client.Documents;
+using System.Security.Claims;
 using System.Text;
+using validacaoJWT.Helpers;
+using validacaoJWT.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,7 +52,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-var key = Encoding.ASCII.GetBytes("f1854477-fee1-4656-a155-e8c3ffc9ba9f");
+var key = Encoding.ASCII.GetBytes(builder.Configuration["JWT_KEY"]);
 
 builder.Services.AddAuthentication(x =>
 {
@@ -68,6 +71,22 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CustomPolicy", policy =>
+    {
+        policy.RequireAssertion(context =>
+        {
+            var hasValidClaims = context.User.Claims.Count() <= 3 &&
+                context.User.Claims.Any(c => c.Type == ClaimTypes.Name && !c.Value.Any(char.IsDigit) && c.Value.Length <= 256) &&
+                context.User.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "admin" || c.Value == "member" || c.Value == "external")) &&
+                context.User.Claims.Any(c => c.Type == "seed" && Helper.IsPrimeNumber(int.Parse(c.Value)));
+
+            return hasValidClaims;
+        });
+    });
+});
+
 builder.Services.TryAddSingleton<IDocumentStore>(ctx =>
 {
     var store = new DocumentStore
@@ -80,6 +99,10 @@ builder.Services.TryAddSingleton<IDocumentStore>(ctx =>
 
     return store;
 });
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\validacaoJWT\\validacaoJWT\\validacaoJWT.csproj": {}
+    "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\JWTvalidator\\validacaoJWT\\validacaoJWT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\validacaoJWT\\validacaoJWT\\validacaoJWT.csproj": {
+    "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\JWTvalidator\\validacaoJWT\\validacaoJWT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\validacaoJWT\\validacaoJWT\\validacaoJWT.csproj",
+        "projectUniqueName": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\JWTvalidator\\validacaoJWT\\validacaoJWT.csproj",
         "projectName": "validacaoJWT",
-        "projectPath": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\validacaoJWT\\validacaoJWT\\validacaoJWT.csproj",
+        "projectPath": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\JWTvalidator\\validacaoJWT\\validacaoJWT.csproj",
         "packagesPath": "C:\\Users\\juanb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\validacaoJWT\\validacaoJWT\\obj\\",
+        "outputPath": "C:\\Users\\juanb\\OneDrive\\Área de Trabalho\\JWTvalidator\\validacaoJWT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication": {
               "target": "Package",
               "version": "[2.2.0, )"

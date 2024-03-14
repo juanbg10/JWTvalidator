@@ -61,6 +61,26 @@
   },
   {
     "ContainingType": "validacaoJWT.Controllers.HomeController",
+    "Method": "External",
+    "RelativePath": "external",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "validacaoJWT.Controllers.HomeController",
     "Method": "Manager",
     "RelativePath": "manager",
     "HttpMethod": "GET",
@@ -80,8 +100,8 @@
     ]
   },
   {
-    "ContainingType": "validacaoJWT.Controllers.ApiAuth",
-    "Method": "AuthenticateAsync",
+    "ContainingType": "validacaoJWT.Controllers.AuthController",
+    "Method": "Authenticate",
     "RelativePath": "v1/login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -89,10 +109,36 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "validacaoJWT.Model.UserDto",
+        "Type": "validacaoJWT.Model.UserLoginDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "validacaoJWT.Controllers.AuthController",
+    "Method": "ValidateJwt",
+    "RelativePath": "v1/validacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "validacaoJWT.Model.JwtDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
